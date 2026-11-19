@@ -54,11 +54,11 @@
             <span>Площадь генеральной уборки:</span>
             <span class="text-amber-700 font-bold"><span id="areaVal">55</span> м²</span>
           </div>
-          <input id="areaInput" type="range" min="20" max="250" value="55" step="5"
-            class="w-full accent-amber-600 cursor-pointer" oninput="recalc()">
-          <div class="flex justify-between text-xs text-slate-400 mt-1">
-            <span>20 м²</span>
-            <span>250 м²</span>
+      <input id="areaInput" type="range" min="15" max="400" value="55" step="5"
+  class="w-full accent-amber-600 cursor-pointer" oninput="recalc()">
+<div class="flex justify-between text-xs text-slate-400 mt-1">
+  <span>15 м²</span>
+  <span>400 м²</span>
           </div>
         </div>
 
@@ -291,7 +291,7 @@
       btn.textContent = isHidden ? 'Скрыть список ▲' : 'Показать список ▼';
     }
 
-    function getCalculationData() {
+  function getCalculationData() {
       const area = parseInt(document.getElementById('areaInput').value, 10) || 55;
       const citySelect = document.getElementById('citySelect');
       const city = citySelect.value;
@@ -301,7 +301,7 @@
       const phone = document.getElementById('clientPhone').value.trim() || 'Не указан';
       const comment = document.getElementById('clientComment').value.trim();
 
-      const baseCost = area * currentBaseRate;
+      const baseCost = Math.max(5000, area * currentBaseRate);
       const selectedExtras = EXTRA_SERVICES.filter(item => item.qty > 0);
       const extrasCost = selectedExtras.reduce((acc, item) => acc + item.qty * item.price, 0);
       const total = baseCost + travelFee + extrasCost;
