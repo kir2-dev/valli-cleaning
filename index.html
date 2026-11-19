@@ -170,12 +170,12 @@
 
           <button onclick="sendToMax()"
             class="w-full py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm shadow-sm transition flex items-center justify-center gap-2">
-            <span>💬 Отправить смету в MAX</span>
+            <span>💬 Отправить смету в MAX (Демо)</span>
           </button>
 
           <button onclick="sendToTelegram()"
             class="w-full py-3 px-4 rounded-xl bg-sky-500 hover:bg-sky-600 text-white font-semibold text-sm shadow-sm transition flex items-center justify-center gap-2">
-            <span>✈️ Отправить смету в Telegram (@clean161)</span>
+            <span>✈️ Отправить смету в Telegram (Демо)</span>
           </button>
 
           <button onclick="window.print()"
@@ -381,19 +381,12 @@
 
     async function sendToMax() {
       const text = buildEstimateText();
-      try { await navigator.clipboard.writeText(text); } catch (e) {}
-      if (navigator.share) {
-        try { await navigator.share({ title: 'Смета клининга ВАЛЛИ', text: text }); return; } catch (err) {}
-      }
-      showNotice('Смета скопирована в буфер! Вставьте её в чат МАХ для номера 8 (908) 181-17-29.');
-      window.open('https://max.ru', '_blank');
+      alert('⚠️ ДЕМО-ВЕРСИЯ\n\nВ рабочей версии эта заявка сразу улетит вам в MAX:\n\n' + text);
     }
 
     async function sendToTelegram() {
       const text = buildEstimateText();
-      try { await navigator.clipboard.writeText(text); } catch (e) {}
-      showNotice('Смета скопирована! Открываем чат @clean161 в Telegram.');
-      window.open(`https://t.me/clean161?text=${encodeURIComponent(text)}`, '_blank');
+      alert('⚠️ ДЕМО-ВЕРСИЯ\n\nВ рабочей версии эта заявка сразу улетит вам в Telegram (@clean161):\n\n' + text);
     }
 
 
